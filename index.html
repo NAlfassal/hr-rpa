@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حصر الأنشطة المعرفية - الهيئة العامة للغذاء والدواء</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo-section">
+            <img src="{{ url_for('static', filename='sfda_logo.png') }}" alt="شعار الهيئة العامة للغذاء والدواء" class="sfda-logo">
+        </div>
+        
+        <div class="header">
+            <h1 class="title">حصر الأنشطة المعرفية في الهيئة العامة للغذاء والدواء</h1>
+            <div class="description">
+                تسعى أكاديمية الغذاء والدواء إلى توفير البيئة الملائمة للتعلم والتطور ونقل المعرفة بشكل مستدام وبما
+                يتلاءم ويلبي طموحات الهيئة في مجالات الهيئة العامة للغذاء والدواء
+            </div>
+        </div>
+
+        <form id="knowledgeForm">
+            <div class="form-group">
+                <label class="form-label">إسم القطاع <span class="required">*</span></label>
+                <select class="form-control" id="sector" name="sector" required>
+                    <option value="">إختر القطاع</option>
+                    <option value="قطاع الغذاء">قطاع الغذاء</option>
+                    <option value="قطاع الدواء">قطاع الدواء</option>
+                    <option value="قطاع الأجهزة والمنتجات الطبية">قطاع الأجهزة والمنتجات الطبية</option>
+                    <option value="قطاع العمليات">قطاع العمليات</option>
+                    <option value="قطاع الأبحاث والمختبرات">قطاع الأبحاث والمختبرات</option>
+                    <option value="قطاع الشؤون التنفيذية">قطاع الشؤون التنفيذية</option>
+                    <option value="قطاع التخطيط والتميز">قطاع التخطيط والتميز</option>
+                    <option value="قطاع الخدمات المساندة">قطاع الخدمات المساندة</option>
+                    <option value="قطاع رأس المال البشري">قطاع رأس المال البشري</option>
+                    <option value="لايوجد"> لايوجد </option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">الإدارة/الإدارةالتنفيذية<span class="required">*</span></label>
+                <select class="form-control" id="department" name="department" required>
+                    <option value="">اختر الإدارة</option>
+                    </select>
+            </div>
+
+
+            <div class="form-group">
+                <label class="form-label">موضوع النشاط <span class="required">*</span></label>
+                <textarea class="form-control" id="activityTopic" name="activityTopic" required
+                    placeholder="كتابة عنوان النشاط المعرفي الذي تم تنفيذه، وشرح مبسط لمحتوى النشاط إن أمكن"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">نوع النشاط <span class="required">*</span></label>
+                <select class="form-control" id="activityType" name="activityType" required>
+                    <option value="">اختر نوع النشاط</option>
+                    <option value="دورة تدريبية">دورة تدريبية</option>
+                    <option value="ورشة عمل">ورشة عمل</option>
+                    <option value="محاضرة">محاضرة</option>
+                    <option value="ندوة">ندوة</option>
+                    <option value="اجتماعات معرفية">اجتماعات معرفية</option>
+                    <option value="لقاء علمي">لقاء علمي</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">الهدف الإستراتيجي من المستوى الأول <span class="required">*</span></label>
+                <select class="form-control" id="strategicGoalLevel1" name="strategicGoalLevel1" required>
+                    <option value="">اختر الهدف الإستراتيجي من المستوى الأول</option>
+                    <option value="تطوير المنظومة الرقابية">تطوير المنظومة الرقابية</option>
+                    <option value="تحسين التواصل والتوعية">تحسين التواصل والتوعية</option>
+                    <option value="تعزيز توفر المنتجات">تعزيز توفر المنتجات</option>
+                    <option value="تعزيز الريادة الدولية">تعزيز الريادة الدولية</option>
+                    <option value="تنويع مصادر الإيرادات">تنويع مصادر الإيرادات</option>
+                    <option value="تطوير التشريع والرقابة على منتجات التقنية الحيوية والحديثة">تطوير التشريع والرقابة على منتجات التقنية الحيوية
+                        والحديثة</option>
+                    <option value="دعم البحث والابتكار">دعم البحث والابتكار</option>
+                    <option value="تمكين المستثمر">تمكين المستثمر</option>
+                    <option value="تنمية رأس المال البشري">تنمية رأس المال البشري</option>
+                    <option value="زيادة استخدام التقنيات الرقمية المتقدمة">زيادة استخدام التقنيات الرقمية المتقدمة</option>
+                    <option value="غير مرتبط بهدف استراتيجي">غير مرتبط بهدف استراتيجي</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">الهدف الإستراتيجي من المستوى الثاني <span class="required">*</span></label>
+                <select class="form-control" id="strategicGoalLevel2" name="strategicGoalLevel2" required>
+                    <option value="">اختر الهدف الإستراتيجي من المستوى الثاني</option>
+                    <option value="تعزيز موثوقية وتوفرية التشغيل">تعزيز موثوقية وتوفرية التشغيل</option>
+                    <option value="رفع مستوى جودة البيانات">رفع مستوى جودة البيانات</option>
+                    <option value="تعزيز التكامل">تعزيز التكامل</option>
+                    <option value="تمكين الحلول الرقمية والتقنيات المتقدمة">تمكين الحلول الرقمية والتقنيات المتقدمة</option>
+                    <option value="رقمنة وتحسين تجربة المستفيد">رقمنة وتحسين تجربة المستفيد</option>
+                    <option value="تحسين الأنظمة والتشريعات لتنويع مصادر الإيرادات">تحسين الأنظمة والتشريعات لتنويع مصادر الإيرادات</option>
+                    <option value="غير مرتبط بهدف استراتيجي">غير مرتبط بهدف استراتيجي</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">تصنيف مقدم النشاط <span class="required">*</span></label>
+                <select class="form-control" id="presenterCategory" name="presenterCategory" required>
+                    <option value="">اختر تصنيف مقدم النشاط</option>
+                    <option value="خبير خارجي">خبير خارجي</option>
+                    <option value="موظف بالهيئة العامة للغذاء والدواء">موظف بالهيئة العامة للغذاء والدواء</option>
+                    <option value="متدرب">متدرب</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">تاريخ إقامة النشاط <span class="required">*</span></label>
+                <input type="date" class="form-control" id="activityDate" name="activityDate" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">اسم مقدم النشاط <span class="required">*</span></label>
+                <input type="text" class="form-control" id="presenterName" name="presenterName" required
+                    placeholder="كتابة اسم الشخص أو الأشخاص الذي قاموا بتقديم النشاط المعرفي">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">اسم المسؤول عن قوائم الحضور <span class="required">*</span></label>
+                <input type="text" class="form-control" id="attendanceResponsible" name="attendanceResponsible" required
+                    placeholder="كتابة اسم الشخص المسؤول عن أسماء الحضور">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">الفئة المستهدفة <span class="required">*</span></label>
+                <textarea class="form-control" id="targetAudience" name="targetAudience" required
+                    placeholder="تحديد الفئة المستهدفة (داخل الهيئة / خارج الهيئة)"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">عدد الحضور <span class="required">*</span></label>
+                <input type="number" class="form-control" id="attendeeCount" name="attendeeCount" required min="1"
+                    placeholder="يرجى كتابة عدد الحضور">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">مدة النشاط (بالساعة) <span class="required">*</span></label>
+                <input type="number" class="form-control" id="activityDuration" name="activityDuration" required min="0.5" step="0.5"
+                    placeholder="يرجى تحديد مدة النشاط بالساعات">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">مكان حفظ المحتوى المعرفي <span class="required">*</span></label>
+                <input type="text" class="form-control" id="contentLocation" name="contentLocation" required
+                    placeholder="يرجى كتابة أين تم حفظ المحتوى">
+            </div>
+
+            <button type="submit" class="submit-btn">إرسال البيانات</button>
+        </form>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p style="color: #4caf50; margin-top: 15px; font-weight: 500;">جاري إرسال البيانات...</p>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            <h3>✅ تم إرسال البيانات بنجاح!</h3>
+            <p>شكراً لك على تقديم معلومات النشاط المعرفي.</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
