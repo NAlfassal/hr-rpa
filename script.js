@@ -1,4 +1,3 @@
-// تعيين الحد الأدنى لتاريخ النشاط (قبل اليوم الحالي)
 const today = new Date();
 const maxDate = today.toISOString().split('T')[0];
 document.getElementById('activityDate').setAttribute('max', maxDate);
@@ -6,7 +5,6 @@ document.getElementById('activityDate').setAttribute('max', maxDate);
 document.getElementById('knowledgeForm').addEventListener('submit', async function (e) {
     e.preventDefault();
 
-    // إظهار رسالة التحميل
     document.getElementById('successMessage').style.display = 'none';
     document.getElementById('loading').style.display = 'block';
 
@@ -23,18 +21,15 @@ document.getElementById('knowledgeForm').addEventListener('submit', async functi
         if (response.ok) {
             const resultText = await response.text();
 
-            // عرض رسالة النجاح من الخادم
             const successDiv = document.getElementById('successMessage');
             successDiv.innerHTML = `<h3>${resultText}</h3>`;
             successDiv.style.display = 'block';
             successDiv.scrollIntoView({ behavior: 'smooth' });
 
-            // إعادة تعيين النموذج بعد 3 ثوانٍ
             setTimeout(function () {
                 document.getElementById('knowledgeForm').reset();
                 successDiv.style.display = 'none';
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                // إعادة تعيين قائمة الإدارات عند إعادة تعيين النموذج
                 updateDepartments();
             }, 3000);
 
@@ -123,7 +118,6 @@ formControls.forEach(control => {
     });
 });
 
-// التحقق من صحة التاريخ
 document.getElementById('activityDate').addEventListener('change', function () {
     const selectedDate = new Date(this.value);
     const today = new Date();
@@ -244,8 +238,6 @@ function updateDepartments() {
     }
 }
 
-// 1. استدعاء الدالة عند تغيير قيمة قائمة القطاع
 sectorSelect.addEventListener('change', updateDepartments);
 
-// 2. استدعاء الدالة عند تحميل الصفحة لتهيئة القائمة
 updateDepartments();
