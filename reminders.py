@@ -5,19 +5,25 @@ import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
 
-def check_and_remind(responses_path, employee_list_path, gmail_user, gmail_pass, form_url):
+def check_and_remind(responses_path, master_list_excel_path, gmail_user, gmail_pass, form_url):
     try:
-        # 1. قراءة قائمة كل الموظفين
-        with open(employee_list_path, 'r', encoding='utf-8') as f:
-            all_employees = set(line.strip() for line in f if line.strip())
+        # 1. قراءة قائمة كل الموظفين من ملف الإكسل الرئيسي
+        if not os.path.exists(master_list_excel_path):
+            print(f"Error: Master employee list not found at {master_list_excel_path}", file=sys.stderr)
+            sys.exit(1)
+            
+        master_df = pd.read_excel(master_list_excel_path)
+        # 🔥 تأكيد: السكريبت يتوقع عمود اسمه 'Email' في هذا الملف
+        all_employees = set(master_df['Email'].dropna().unique())
         
         # 2. قراءة قائمة من قاموا بالرد
         if not os.path.exists(responses_path):
             responded_employees = set()
         else:
-            df = pd.read_excel(responses_path)
-            if 'البريد الإلكتروني' in df.columns:
-                responded_employees = set(df['البريد الإلكتروني'].dropna().unique())
+            responses_df = pd.read_excel(responses_path)
+            # 🔥 تأكيد: السكريبت يتوقع عمود اسمه 'البريد الإلكتروني' في ملف الردود
+            if 'البريد الإلكتروني' in responses_df.columns:
+                responded_employees = set(responses_df['البريد الإلكتروني'].dropna().unique())
             else:
                 responded_employees = set()
 
@@ -30,7 +36,7 @@ def check_and_remind(responses_path, employee_list_path, gmail_user, gmail_pass,
 
         print(f"Found {len(non_responders)} employees who have not responded. Sending reminders...")
 
-        # 4. إرسال إيميل تذكير
+        # 4. إرسال إيميل تذكير (لا تغيير هنا)
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
         server.login(gmail_user, gmail_pass)
@@ -62,9 +68,8 @@ def check_and_remind(responses_path, employee_list_path, gmail_user, gmail_pass,
         sys.exit(1)
 
 if __name__ == "__main__":
-    # استلام المتغيرات من سطر الأوامر
     if len(sys.argv) != 6:
-        print("Usage: python reminder_checker.py <responses_path> <employee_list_path> <gmail_user> <gmail_pass> <form_url>", file=sys.stderr)
+        print("Usage: python reminder_checker.py <responses_path> <master_list_excel_path> <gmail_user> <gmail_pass> <form_url>", file=sys.stderr)
         sys.exit(1)
     
     check_and_remind(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])
