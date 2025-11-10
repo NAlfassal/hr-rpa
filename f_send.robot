@@ -14,7 +14,7 @@ ${RESPONSES_FILE}      D:\\employee form\\data\\responses.xlsx
 # --------------------------------------------------------
 
 ${GMAIL_USER}     nadaalfassal@gmail.com
-${GMAIL_PASS}     qdoarilqytgttkmg
+${GMAIL_PASS}     
 ${SMTP_SERVER}    smtp.gmail.com
 ${SMTP_PORT}      587
 ${FORM_URL}       http://localhost:5000/form
@@ -140,4 +140,5 @@ Send Archive To HR
     ...    subject=📊 التقرير الشهري للأنشطة المعرفية 
     ...    body=مرفق ملف الردود المجمعة والمُعالجة، مع تظليل الصفوف المكررة باللون الأحمر للمراجعة.
     ...    attachments=${attachment_path}
+
     Log To Console    Report sent successfully to HR.
